@@ -32,26 +32,30 @@ Mongodb
 
 ### Pool
 
-    defmodule MongoPool do
-      use Mongo.Pool, name: __MODULE__, adapter: Mongo.Pool.Poolboy
-    end
+```elixir
+defmodule MongoPool do
+  use Mongo.Pool, name: __MODULE__, adapter: Mongo.Pool.Poolboy
+end
 
-    # Starts a process on the module name MongoPool
-    {:ok, _} = MongoPool.start_link(database: "test")
+# Starts a process on the module name MongoPool
+{:ok, _} = MongoPool.start_link(database: "test")
 
-    # Gets an enumerable cursor for the results
-    cursor = Mongo.find(MongoPool, "test-collection", %{}) |> Enum.to_list
+# Gets an enumerable cursor for the results
+cursor = Mongo.find(MongoPool, "test-collection", %{}) |> Enum.to_list
 
-    Enum.to_list cursor
-      |> IO.inspect
+Enum.to_list cursor
+  |> IO.inspect
+```
 
 ### Connection
 
-    # Starts a process on the module name MongoPool
-    {:ok, mongo_connection} = Mongo.Connection.start_link(database: "test")
+```elixir
+# Starts a process on the module name MongoPool
+{:ok, mongo_connection} = Mongo.Connection.start_link(database: "test")
 
-    # Gets an enumerable cursor for the results
-    cursor = Mongo.Connection.find(mongo_connection, "test-collection", %{}) |> Enum.to_list
+# Gets an enumerable cursor for the results
+cursor = Mongo.Connection.find(mongo_connection, "test-collection", %{}) |> Enum.to_list
+```
 
 ## License
 
