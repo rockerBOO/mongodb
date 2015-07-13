@@ -41,7 +41,7 @@ end
 {:ok, _} = MongoPool.start_link(database: "test")
 
 # Gets an enumerable cursor for the results
-cursor = Mongo.find(MongoPool, "test-collection", %{}) |> Enum.to_list
+cursor = Mongo.find(MongoPool, "test-collection", %{})
 
 Enum.to_list cursor
   |> IO.inspect
