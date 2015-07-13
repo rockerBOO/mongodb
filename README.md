@@ -30,7 +30,8 @@ Mongodb
 
 ## Usage
 
-### Pool
+
+### Connection Pools
 
 ```elixir
 defmodule MongoPool do
@@ -45,16 +46,6 @@ cursor = Mongo.find(MongoPool, "test-collection", %{})
 
 Enum.to_list cursor
   |> IO.inspect
-```
-
-### Connection
-
-```elixir
-# Starts a process on the module name MongoPool
-{:ok, mongo_connection} = Mongo.Connection.start_link(database: "test")
-
-# Gets an enumerable cursor for the results
-cursor = Mongo.Connection.find(mongo_connection, "test-collection", %{}) |> Enum.to_list
 ```
 
 ## License
